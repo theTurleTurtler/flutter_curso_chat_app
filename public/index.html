@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SocketServer</title>
+    </head>
+    <body>
+        <h1>Acceso denegado</h1>
+        <script src="socket.io/socket.io.js"></script>
+        <script>
+            var socket = io();
+            socket.on('connect', function(){
+                console.log('conectando al servidor');
+            });
+
+            socket.on('disconnect', function(){
+                console.log('se ha perdido la conección con el servidor');
+            })
+
+            socket.emit('mensaje', {
+                nombre: "Jhonatan",
+                edad: 23
+            });
+
+            socket.on('mensaje_ingresado', function(data){
+                console.log('ha llegado la respuesta al mensaje enviado: ', data);
+            });
+            socket.on('mensaje', function(data){
+                console.log('recibiendo mensaje del servidor: ', data);
+            });
+            socket.on('mensaje_desde_flutter_status',  (data)=>{
+                console.log('se ha recibido un mensaje desde flutter status (en el index.html): ', data);
+                
+            });
+                        
+            socket.on('civilizaciones_activas', (data)=>{
+                console.clear();
+                console.log('desde el html: se ha envíado las civilizaciones: ');
+                console.table(data);
+            });
+        </script>
+    </body>
+</html>
