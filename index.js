@@ -25,7 +25,9 @@ const publicPath = path.resolve(__dirname, 'public');
 //aún no entiendo bien cómo
 app.use(express.static(publicPath));
 //Para responder a cualquier petición hecha a <ruta>/api/login, se ejecuta 
-app.use('/api/login', require('./routes/auth'))
+app.use('/api/login', require('./routes/auth'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/messages', require('./routes/messages'));
 
 server.listen(process.env.PORT, (err)=>{
     if( err ) throw new Error(err);

@@ -22,7 +22,7 @@ const register = async(req, res = response) => {
 		const token = await generarJWT(newUser.id);
 		res.json({
 			ok: true,
-			body: newUser,
+			user: newUser,
 			token,
 			msg: 'Successful registration'
 		});

@@ -7,6 +7,7 @@ const generarJWT = (uid = String)=>{
 		};
 		jwt.sign(
 			payload, process.env.JWT_KEY,
+
 			{expiresIn: '48h'},
 			(err, token=String)=>{
 				if(err){
@@ -19,5 +20,5 @@ const generarJWT = (uid = String)=>{
 };
 
 module.exports = {
-	generarJWT
+	generarJWT	
 }
